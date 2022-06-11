@@ -1,0 +1,49 @@
+
+<div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal" onclick="homepage()">FoodMatching</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <button 
+    *ngIf="this.authService.isLoggedIn" 
+    class="btn btn-dark"
+    >User Profile</button>
+    
+    <a
+      *ngIf="!this.authService.isLoggedIn"
+      class="p-2 text-dark"
+      routerLinkActive="active"
+      routerLink="/log-in"
+      >Sign in</a
+    >
+  
+    <a
+    *ngIf="!this.authService.isLoggedIn"
+    class="btn btn-outline-primary"
+    routerLinkActive="active"
+    routerLinkActive="active"
+    routerLink="/sign-up"
+    >Sign up</a
+   >
+   <button 
+    (click)="logout()"
+    *ngIf="this.authService.isLoggedIn"
+    type="button"
+    class="btn btn-danger"
+    >
+    Logout
+    </button>
+    <button class="btn btn-success"
+    *ngIf="this.authService.isLoggedIn">
+    Menu
+    </button>
+  </nav>
+
+
+</div>
+
+
+<router-outlet></router-outlet>
+<div class="main-padding">
+<app-my-list-food *ngIf="this.authService.isLoggedIn"></app-my-list-food>
+</div>
